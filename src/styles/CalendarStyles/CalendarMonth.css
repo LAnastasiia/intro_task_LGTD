@@ -1,0 +1,22 @@
+.calendar__month__week {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+    padding: 0.5rem;
+    border-bottom: #99a6b3 solid 1px;
+}
+
+.calendar__nav_bar button.month__selected {
+    background-color: #387a77;
+    color: whitesmoke;
+}
+
+.calendar__month {
+    padding: 3rem 1.25rem 1.25rem;
+    width: 85%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}

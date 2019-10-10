@@ -1,0 +1,8 @@
+.task__new {
+    margin: 0.5rem 0.5rem 0.5rem 1.25rem;
+}
+
+.task__inactive {
+    background-color: whitesmoke;
+    color: lightslategrey;
+}
