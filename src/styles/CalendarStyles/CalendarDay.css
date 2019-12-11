@@ -1,12 +1,12 @@
 .calendar__month__week__day {
     width: 10%;
-    /*height: 3vh;*/
     height: auto;
-    margin: 0.25rem;
+    overflow: hidden;
     color: white;
     text-align: center;
     border-radius: 10%;
-    align-self: center;
+    align-self: start;
+    margin: 1rem 0.25rem 0.25rem;
     padding: 0.25rem;
 }
 
@@ -28,7 +28,7 @@
     color: #627383;
 }
 
-.calendar__month__week__day > p {
+.calendar__month__week__day {
     margin: inherit;
 }
 

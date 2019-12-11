@@ -1,9 +1,8 @@
 .calendar{
-    min-height: 500px;
-    min-width: 500px;
+    min-height: auto;
+    min-width: 800px;
 
-    max-height: 750px;
-    max-width: 750px;
+    max-width: 1000px;
 
     margin: 2rem;
     padding: 1rem;

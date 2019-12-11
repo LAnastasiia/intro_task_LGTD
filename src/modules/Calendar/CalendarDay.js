@@ -3,20 +3,25 @@ import React from "react";
 import '../../styles/CalendarStyles/CalendarDay.css'
 
 
-
 class CalendarDay extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            deSelected: false
+        }
+    }
 
     get style() {
         let dayClassName = "calendar__month__week__day";
 
-        // Render days from other months as grey blocks.
         if (this.props.date > 0) {
             dayClassName += " day__active";
         } else {
             dayClassName  += " day__empty";
         }
 
-        if (this.props.isSelected) {
+        if (this.props.isSelected && ! this.state.deSelected) {
             dayClassName += " selected"
         }
 
@@ -28,13 +33,18 @@ class CalendarDay extends React.Component {
     }
 
     OpenToDoOnClick = () => {
-        this.props.updateSelectedDateInCalendar(this.props.date);
+
+        if (this.props.isSelected){
+            this.setState({deSelected: ! this.state.deSelected});
+        } else {
+            this.props.updateSelectedDateInCalendar(this.props.date);
+            this.setState({deSelected: false});
+        }
     };
 
     render() {
-
         return (
-            <div className={ this.style }
+            <div className={this.style}
                  onClick={this.OpenToDoOnClick}>
                 <p>{this.props.date}</p>
             </div>

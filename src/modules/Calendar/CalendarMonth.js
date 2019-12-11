@@ -7,15 +7,15 @@ import CalendarDay from "./CalendarDay";
 
 
 class calendarMonth extends React.Component {
-    generate(firstDay){
-        let month = [];
 
+    generateWeeksArray(selectedDate){
+        let firstDay = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), 1);
+        let month = [];
         let firstWeek = Array(7).fill('').map((v,i)=>{
-            return i < firstDay.get("weekday") ? 0 : Math.floor(i-firstDay.get("weekday") + 1).toString();
+            return i < firstDay.getDay() ? 0 : Math.floor(i-firstDay.getDay() + 1).toString();
         });
         month.push(firstWeek);
-
-        let nextDay = 7 - firstDay.get("weekday") + 1;
+        let nextDay = 7 - firstDay.getDay() + 1;
         let numOfWeeks = Math.ceil((moment(firstDay).daysInMonth() - nextDay) / 7);
 
         for (let w=0; w < numOfWeeks; w++){
@@ -27,26 +27,33 @@ class calendarMonth extends React.Component {
         return month;
     }
 
-    selectDateInCalendar = (dataIndex) => {
-        this.props.updateSelectedDate(dataIndex, this.props.firstDay.get("month"));
-    };
+    isDateToday(dateString) {
+        return new Date().getDate().toString() === dateString;
+    }
 
-    renderWeek(arr) {
+    isDateSelected(dateString) {
+        return this.props.selectedDate.getDate().toString() === dateString;
+    }
+
+    renderWeek(arr, weekIndex) {
         return (
-            <div className={"calendar__month__week"} key={arr[0]}>
+            <div key={arr[1]}>
+                <div className={"calendar__month__week"} key={weekIndex}>
 
-                { arr.map( (value, index) => <CalendarDay date={value}
-                                                          key={index}
-                                                          isToday={this.props.todayDate && this.props.todayDate.toString() === value}
-                                                          isSelected={this.props.selectedDate && this.props.selectedDate.getDate().toString() === value}
-                                                          updateSelectedDateInCalendar={ (dateIndex) => this.selectDateInCalendar(dateIndex) } /> )}
+                    { arr.map( (value, index) => <CalendarDay date={value}
+                                                              key={index}
+                                                              isToday={this.isDateToday(value)}
+                                                              isSelected={this.isDateSelected(value)}
+                                                              updateSelectedDateInCalendar={(d_index) => this.props.updateSelectedDate(d_index)} />)}
+                </div>
             </div>
         );
     }
 
-    render() {
-        const month = this.generate(this.props.firstDay);
 
+    render() {
+
+        const month = this.generateWeeksArray(this.props.selectedDate);
         return (
             <section className={"calendar__month"}>
                 <div className={"calendar__month__week week__info"}>
@@ -58,7 +65,7 @@ class calendarMonth extends React.Component {
                 </div>
 
                 <div>
-                    { month.map( (week) => this.renderWeek(week) )}
+                    {month.map( (week, weekIndex) => { return this.renderWeek(week, weekIndex); } )}
                 </div>
             </section>
         );

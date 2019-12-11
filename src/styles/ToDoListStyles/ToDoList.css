@@ -13,27 +13,16 @@ code {
 }
 
 .list {
-    padding: 1rem;
-    border: 1px solid darkblue;
+    padding: 0.5rem;
+    border: 1px solid silver;
     list-style: none;
     background-color: whitesmoke;
+    /*width: 100%;*/
+    margin: 2rem;
 }
 
 .list .task {
     margin: 0.5rem;
-}
-
-.task {
-    border-bottom: 1px solid lightslategrey;
-    padding: 0.75rem 0.75rem 0.25rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 90%;
-}
-
-.task__changing {
-    background-color: lightslategrey;
 }
 
 .list input {
@@ -45,43 +34,9 @@ code {
     outline: none;
 }
 
-.task p {
-    margin: 0;
-}
-
-button {
-    height: 100%;
-    background-color: #627383;
-    border-style: none;
-    margin: 0.25rem;
-    border-radius: 10%;
-    color: whitesmoke;
-}
-
-.actionButton__light {
-    background-color: whitesmoke;
-    color: lightslategrey;
-}
-
-.inactive {
-    display: none;
-    /*opacity: 50%;*/
-}
-
 .actionButton__inactive {
     background-color: whitesmoke;
     color: lightslategrey;
-}
-
-.task__inactive {
-    background-color: whitesmoke;
-    color: lightslategrey;
-}
-
-.newButton{
-    border-radius: 50%;
-    height: 1.25rem;
-    width: 1.25rem;
 }
 
 .list .newButton {
@@ -91,12 +46,30 @@ button {
     border: solid 1px lightslategrey;
 }
 
-.newButton:hover{
-    background-color: lightslategrey;
+.task__new {
+    margin: 0.5rem 0.5rem 0.5rem 1.25rem;
+}
+
+.visible {
+    display: inherit;
+}
+
+.hidden {
+    display: none;
+}
+
+.list > * {
+    margin-left: 0.5rem;
+}
+
+.list > button {
+    height: 1.75rem;
+    background-color: #627383;
     color: whitesmoke;
 }
 
-.task__new {
-    margin: 0.5rem 0.5rem 0.5rem 1.25rem;
+.list > form {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
