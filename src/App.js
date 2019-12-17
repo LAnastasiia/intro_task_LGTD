@@ -43,7 +43,8 @@ class App extends React.Component {
     return (
         <main>
           <Calendar selectedDate={this.state.date}
-                    selectDate={this.selectDate}/>
+                    selectDate={this.selectDate}
+                    selectMonth={this.selectMonth}/>
 
           {this.state.tasks.length > 0
               ?

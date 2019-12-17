@@ -28,7 +28,8 @@ class calendarMonth extends React.Component {
     }
 
     isDateToday(dateString) {
-        return new Date().getDate().toString() === dateString;
+        return new Date().getMonth() === this.props.selectedDate.getMonth()
+            && new Date().getDate().toString() === dateString;
     }
 
     isDateSelected(dateString) {
