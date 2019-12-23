@@ -4,12 +4,15 @@ import '../../styles/CalendarStyles/CalendarMonth.css'
 
 import moment, {weekdaysShort} from "moment";
 import CalendarDay from "./CalendarDay";
+import {getSelectedDate, getSelectedMonth, getSelectedYear} from "./_selectors";
+import {selectDate} from "./_actionsDefinitions";
+import {connect} from "react-redux";
 
 
-class calendarMonth extends React.Component {
+class CalendarMonth extends React.Component {
 
-    generateWeeksArray(selectedDate){
-        let firstDay = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), 1);
+    generateWeeksArray(){
+        let firstDay = new Date(this.props.selectedYear, this.props.selectedMonth, 1);
         let month = [];
         let firstWeek = Array(7).fill('').map((v,i)=>{
             return i < firstDay.getDay() ? 0 : Math.floor(i-firstDay.getDay() + 1).toString();
@@ -28,12 +31,12 @@ class calendarMonth extends React.Component {
     }
 
     isDateToday(dateString) {
-        return new Date().getMonth() === this.props.selectedDate.getMonth()
+        return new Date().getMonth() === this.props.selectedMonth
             && new Date().getDate().toString() === dateString;
     }
 
     isDateSelected(dateString) {
-        return this.props.selectedDate.getDate().toString() === dateString;
+        return this.props.selectedDate && this.props.selectedDate.getDate().toString() === dateString;
     }
 
     renderWeek(arr, weekIndex) {
@@ -45,7 +48,7 @@ class calendarMonth extends React.Component {
                                                               key={index}
                                                               isToday={this.isDateToday(value)}
                                                               isSelected={this.isDateSelected(value)}
-                                                              updateSelectedDateInCalendar={(d_index) => this.props.updateSelectedDate(d_index)} />)}
+                                                              selectedDate={this.props.selectedDate || new Date(this.props.selectedYear, this.props.selectedMonth, 1)} />)}
                 </div>
             </div>
         );
@@ -53,8 +56,7 @@ class calendarMonth extends React.Component {
 
 
     render() {
-
-        const month = this.generateWeeksArray(this.props.selectedDate);
+        const month = this.generateWeeksArray();
         return (
             <section className={"calendar__month"}>
                 <div className={"calendar__month__week week__info"}>
@@ -73,4 +75,18 @@ class calendarMonth extends React.Component {
     }
 }
 
-export default calendarMonth;
+const mapStateToProps = (state) => {
+    return {
+        selectedDate: getSelectedDate(state),
+        selectedMonth: getSelectedMonth(state),
+        selectedYear: getSelectedYear(state),
+    }
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        selectDate: (newDate) => dispatch(selectDate(newDate))
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CalendarMonth);

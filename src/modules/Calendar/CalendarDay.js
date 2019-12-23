@@ -1,55 +1,49 @@
 import React from "react";
 
 import '../../styles/CalendarStyles/CalendarDay.css'
+import {selectDay} from "./_actionsDefinitions";
+import {getTasks} from "../ToDoList/_actionsDefinitions"
+import {connect} from "react-redux";
 
 
 class CalendarDay extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            deSelected: false
+    get className() {
+        let className = "calendar__month__week__day";
+        if (parseInt(this.props.date) === 0) {
+            return className.concat(" day__empty");
         }
-    }
-
-    get style() {
-        let dayClassName = "calendar__month__week__day";
-
-        if (this.props.date > 0) {
-            dayClassName += " day__active";
-        } else {
-            dayClassName  += " day__empty";
-        }
-
-        if (this.props.isSelected && ! this.state.deSelected) {
-            dayClassName += " selected"
-        }
-
-        if (this.props.isToday){
-            dayClassName += " today";
-        }
-
-        return dayClassName
-    }
-
-    OpenToDoOnClick = () => {
-
         if (this.props.isSelected){
-            this.setState({deSelected: ! this.state.deSelected});
-        } else {
-            this.props.updateSelectedDateInCalendar(this.props.date);
-            this.setState({deSelected: false});
+            return className.concat(" selected")
         }
+        if (this.props.isToday){
+            return className.concat(" today");
+        }
+        return className.concat(" day__active");
+    }
+
+    selectDayOnClick = () => {
+        this.props.selectDay(this.props.date);
     };
 
     render() {
         return (
-            <div className={this.style}
-                 onClick={this.OpenToDoOnClick}>
+            <div className={this.className} onClick={this.selectDayOnClick}>
                 <p>{this.props.date}</p>
             </div>
         )
     }
 }
 
-export default CalendarDay;
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        selectDay: (dayNumber) => {
+            dispatch(selectDay(dayNumber));
+            dispatch(getTasks(ownProps.selectedDate, dayNumber));
+        }
+
+    }
+};
+
+export default connect(null, mapDispatchToProps)(CalendarDay);

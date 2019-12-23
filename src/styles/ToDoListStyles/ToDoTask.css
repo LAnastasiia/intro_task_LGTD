@@ -53,3 +53,7 @@ button {
     height: 1.25rem;
     width: 1.25rem;
 }
+
+.inactive{
+    border: solid 2px red;
+}

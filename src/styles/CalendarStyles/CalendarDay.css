@@ -34,8 +34,8 @@
 
 .today {
     background-color: #387a77;
-    border: solid 3px whitesmoke;
-    box-shadow: 0 0 0 3px #387a77;
+    /*border: solid 3px whitesmoke;*/
+    /*box-shadow: 0 0 0 3px #387a77;*/
 }
 
 .selected {

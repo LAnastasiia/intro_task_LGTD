@@ -1,60 +1,31 @@
 import React from 'react';
-import './App.css';
 
-//styles
-import './styles/test_styles.css'
-
-// components
-import {getTasks} from "./modules/serverCommunication";
-import Calendar from "./modules/Calendar/Calendar";
 import ToDoList from "./modules/ToDoList/ToDoList";
+import './styles/app_styles.css'
+import Calendar from "./modules/Calendar/Calendar";
+import {connect} from "react-redux";
+import {getSelectedDate} from "./modules/Calendar/_selectors";
 
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.todayDate = new Date();
-    this.state = {
-        date: this.todayDate,
-        tasks: []
-    };
-    this.fetchData(this.todayDate).then(() => console.log(" ✓ tasks fetched"));
-  }
-
-  fetchData = async (selectedDate) => {
-    await getTasks(selectedDate).then(
-        (response) => this.setState({tasks: response.selectedTasks})
-    );
-  };
-
-  selectMonth = (m_index) => {
-      let newDate = new Date(this.state.date.getFullYear(), m_index, 1);
-      this.setState({ date: newDate });
-      this.fetchData(newDate).then( () => console.log( `✓ tasks updated for 1st of ${m_index}`) );
-  };
-
-  selectDate = (d_index) => {
-      let newDate = new Date(this.state.date.getFullYear(), this.state.date.getMonth(), d_index);
-      this.setState({ date: newDate });
-      this.fetchData(newDate).then( () => console.log( `✓ tasks updated for new date - ${d_index}`) );
-  };
 
   render() {
     return (
         <main>
-          <Calendar selectedDate={this.state.date}
-                    selectDate={this.selectDate}
-                    selectMonth={this.selectMonth}/>
-
-          {this.state.tasks.length > 0
-              ?
-              <ToDoList date={this.state.date}
-                        tasks={this.state.tasks}/>
-              :
-              null}
+          <Calendar/>
+          {this.props.selectedDate ? <ToDoList selectedDate={this.props.selectedDate}/> : null}
         </main>
-    )
+        )
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+    return {
+        selectedDate: getSelectedDate(state),
+    };
+};
+
+export default connect(mapStateToProps)(App);
+
+// npm start
+// json-server --watch src/db.json --port 3001

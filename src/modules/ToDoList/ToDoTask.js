@@ -1,39 +1,81 @@
 import React from "react";
 import '../../styles/ToDoListStyles/ToDoList.css'
 import '../../styles/ToDoListStyles/ToDoTask.css'
+import {completeTask, deleteTask, modifyTaskContent} from "./_actionsDefinitions";
+import {connect} from "react-redux";
+import {isTaskComplete, getTaskByID} from './_selectors'
 
 
 class ToDoTask extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {modifying: false}
+    }
 
-    storeChangingInput = (event) => { this.props.task.content = event.target.value; };
+    storeChangingInput = (event) => {
+        this.props.updateTask(this.props.id, event.target.value);
+    };
+
+    modifyingTask = (on=true) => {
+        this.setState({modifying: on});
+    };
+
+    updateTaskOnSubmit = (event) => {
+        event.preventDefault();
+        this.modifyingTask(false)
+    };
+
+    completeTaskOnDoneButton = () => {
+        this.props.completeTask(this.props.id, this.props.content)
+    };
+
+    deleteTaskOnDelButton = () => {
+        this.props.deleteTask(this.props.id);
+    };
 
     render() {
-        let actionButtonStyle = this.props.task.isDone ? "actionButton__inactive" : "actionButton";
-        let taskStyle = this.props.task.isDone ? "task task__inactive" : "task";
-        taskStyle = this.props.task.isChanging ? "task task__changing" : taskStyle;
+        const todoStyle = this.props._isComplete ? "task inactive" : "task";
 
-        if (this.props.task.isChanging){
-            return <li className={taskStyle}>
-                <form>
-                    <input defaultValue={this.props.task.content} onChange={this.storeChangingInput}
-                           onSubmit={this.props.updateTask} autoFocus={true}
-                    />
-                    <button onClick={this.props.updateTask} className="actionButton__light">OK</button>
-                </form>
-            </li>
+        if (this.state.modifying) {
+            return (
+                <li>
+                    <form onSubmit={this.updateTaskOnSubmit}>
+                        <input defaultValue={this.props.content} onChange={this.storeChangingInput}
+                               onSubmit={this.updateTaskOnSubmit} autoFocus={true}
+                        />
+                        <button onClick={this.props.updateTaskOnSubmit} className="actionButton__light">OK</button>
+                    </form>
+
+                </li>
+            )
         }
 
         return (
-            <li className={taskStyle}>
-                <p onClick={this.props.editTask}>{this.props.task.content}</p>
+            <li className={todoStyle}>
+                <p> {this.props.content} </p>
                 <div className={"task_action_bar"}>
-                    <button onClick={this.props.markComplete} className={actionButtonStyle}>DONE</button>
-                    <button onClick={this.props.editTask} className={actionButtonStyle}>EDIT</button>
-                    <button onClick={this.props.removeTask} className={actionButtonStyle}>DEL</button>
+                    <button onClick={this.completeTaskOnDoneButton}>DONE</button>
+                    <button onClick={this.modifyingTask}>EDIT</button>
+                    <button onClick={this.deleteTaskOnDelButton}>DEL</button>
                 </div>
             </li>
         );
     }
 }
 
-export default ToDoTask;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        deleteTask: (id) => dispatch(deleteTask(id)),
+        updateTask: (id, content) => dispatch(modifyTaskContent(id, content)),
+        completeTask: (id, content) => dispatch(completeTask(id, content))
+    }
+};
+
+const mapStateToProps = (state, ownProps) => {
+    return {
+        _isComplete: isTaskComplete(state, ownProps.id),
+        content: getTaskByID(state, ownProps.id).content,
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ToDoTask);
