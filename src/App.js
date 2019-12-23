@@ -1,26 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import ToDoList from "./modules/ToDoList/ToDoList";
+import './styles/app_styles.css'
+import Calendar from "./modules/Calendar/Calendar";
+import {connect} from "react-redux";
+import {getSelectedDate} from "./modules/Calendar/_selectors";
+
+
+class App extends React.Component {
+
+  render() {
+    return (
+        <main>
+          <Calendar/>
+          {this.props.selectedDate ? <ToDoList selectedDate={this.props.selectedDate}/> : null}
+        </main>
+        )
+  }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+    return {
+        selectedDate: getSelectedDate(state),
+    };
+};
+
+export default connect(mapStateToProps)(App);
+
+// npm start
+// json-server --watch src/db.json --port 3001

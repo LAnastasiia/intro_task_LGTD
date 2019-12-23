@@ -1,0 +1,41 @@
+.calendar__month__week__day {
+    width: 10%;
+    height: auto;
+    overflow: hidden;
+    color: white;
+    text-align: center;
+    border-radius: 10%;
+    align-self: start;
+    margin: 1rem 0.25rem 0.25rem;
+    padding: 0.25rem;
+}
+
+.calendar__month__week__day > p {
+    height: inherit;
+}
+
+.day__active {
+    background-color: #627383;
+}
+
+.day__empty {
+    background-color: #d3d9de;
+    color: #d3d9de;
+}
+
+.day__info {
+    background-color: transparent;
+    color: #627383;
+}
+
+.calendar__month__week__day {
+    margin: inherit;
+}
+
+.today {
+    background-color: #387a77;
+}
+
+.selected {
+    background-color: orange;
+}

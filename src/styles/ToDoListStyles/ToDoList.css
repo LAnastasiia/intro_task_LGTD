@@ -1,0 +1,74 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.list {
+    padding: 0.5rem;
+    border: 1px solid silver;
+    list-style: none;
+    background-color: whitesmoke;
+    margin: 2rem;
+}
+
+.list .task {
+    margin: 0.5rem;
+}
+
+.list input {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.list input:focus {
+    outline: none;
+}
+
+.actionButton__inactive {
+    background-color: whitesmoke;
+    color: lightslategrey;
+}
+
+.list .newButton {
+    margin-left: 2rem;
+    background-color: whitesmoke;
+    color: lightslategrey;
+    border: solid 1px lightslategrey;
+}
+
+.task__new {
+    margin: 0.5rem 0.5rem 0.5rem 1.25rem;
+}
+
+.visible {
+    display: inherit;
+}
+
+.hidden {
+    display: none;
+}
+
+.list > * {
+    margin-left: 0.5rem;
+}
+
+.list > button {
+    height: 1.75rem;
+    background-color: #627383;
+    color: whitesmoke;
+}
+
+.list > form {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+

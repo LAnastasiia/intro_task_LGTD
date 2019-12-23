@@ -1,0 +1,12 @@
+.testing_div {
+    margin: 1rem;
+    padding: 1rem;
+    display: inline-block;
+    background-color: lavenderblush;
+    border: solid 2px #627383;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+}

@@ -1,8 +1,136 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="bd86ec1c-6044-4c90-b55a-78f0fe014504" name="Default Changelist" comment="redux v_0">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/db.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/Calendar/CalendarNavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Calendar/CalendarNavBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/Calendar/_reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Calendar/_reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/Calendar/_selectors.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Calendar/_selectors.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/ToDoList/ToDoList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/ToDoList/ToDoList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/ToDoList/_actionsDefinitions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/ToDoList/_actionsDefinitions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/ToDoList/_actionsTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/ToDoList/_actionsTypes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/ToDoList/_reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/ToDoList/_reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/ToDoList/_selectors.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/ToDoList/_selectors.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/CalendarStyles/CalendarDay.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/CalendarStyles/CalendarDay.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/CalendarStyles/CalendarMonth.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/CalendarStyles/CalendarMonth.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/CalendarStyles/CalendarNavBar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/CalendarStyles/CalendarNavBar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/ToDoListStyles/ToDoList.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/ToDoListStyles/ToDoList.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/ToDoListStyles/ToDoTask.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/ToDoListStyles/ToDoTask.css" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="tsconfig.json" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1RPdIAJWCyUyVH8N9cnJv4llvbj" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/modules/Calendar/CalendarNavBar" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path" value="node" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/modules/serverCommunication" />
+      <recent name="$PROJECT_DIR$/src/modules/Calendar" />
+      <recent name="$PROJECT_DIR$/src/modules/Calendar/CalendarNavBar" />
+      <recent name="$PROJECT_DIR$/src/modules/ToDoList" />
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/modules/Calendar/CalendarNavBar" />
+      <recent name="$PROJECT_DIR$/src/modules/Main" />
+      <recent name="$PROJECT_DIR$/src/modules" />
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/src/modules/Calendar" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bd86ec1c-6044-4c90-b55a-78f0fe014504" name="Default Changelist" comment="" />
+      <created>1570721243514</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1570721243514</updated>
+      <workItem from="1570721244664" duration="4066000" />
+      <workItem from="1576950319513" duration="142000" />
+      <workItem from="1577020772610" duration="17846000" />
+      <workItem from="1577095201554" duration="21621000" />
+      <workItem from="1577117571476" duration="591000" />
+      <workItem from="1577130073145" duration="1392000" />
+      <workItem from="1577133210142" duration="4670000" />
+    </task>
+    <task id="LOCAL-00001" summary="redux v_0">
+      <created>1577118026339</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1577118026339</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="redux v_0" />
+    <option name="LAST_COMMIT_MESSAGE" value="redux v_0" />
   </component>
 </project>

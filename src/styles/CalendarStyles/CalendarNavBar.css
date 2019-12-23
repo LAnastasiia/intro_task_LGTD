@@ -1,0 +1,47 @@
+.calendar__nav_bar {
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+    padding: 0.25rem 0.25rem 0.5rem;
+    border-bottom: solid 1px lightslategrey;
+}
+
+.calendar__nav_bar button {
+    min-height: 1.5rem;
+    min-width: 1.75rem;
+    background-color: transparent;
+    color: rgb(56, 122, 119);
+}
+
+.calendar__nav_bar button:focus{
+    background-color: orange;
+    color: whitesmoke;
+}
+
+.calendar__nav_bar__year{
+    width: 3.5rem;
+    height: 1.5rem;
+    align-self: center;
+    color: #627383;
+    background-color: transparent;
+    border: none;
+}
+
+button {
+    height: 100%;
+    background-color: #627383;
+    border-style: none;
+    margin: 0.25rem;
+    border-radius: 10%;
+    color: whitesmoke;
+}
+
+.calendar__nav_bar button.month__selected {
+    background-color: orange;
+    color: whitesmoke;
+}
+
+.calendar__nav_bar button.month__this {
+    background-color: #387a77;
+    color: whitesmoke;
+}

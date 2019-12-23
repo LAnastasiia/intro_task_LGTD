@@ -1,0 +1,12 @@
+.calendar{
+    min-height: auto;
+    min-width: 800px;
+
+    max-width: 1000px;
+
+    margin: 2rem;
+    padding: 1rem;
+    border: solid 1px lightblue;
+    background-color: whitesmoke;
+    align-items: center;
+}
