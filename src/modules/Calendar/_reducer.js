@@ -1,18 +1,21 @@
 import * as types from './_actionsTypes'
-import {getSelectedMonth, getSelectedYear} from "./_selectors";
 
-const initialState = {date: null};
+const initialState = {
+    date: null,
+    selectedMonth: new Date().getMonth(),
+    selectedYear: new Date().getFullYear()
+};
 
 
 export const dateReducer = (state=initialState, action) => {
     switch (action.type) {
         case types.SELECT_MONTH:
-            const date = new Date(state.date.getFullYear(), action.monthNumber, 1);
-            return {...state, date};
+            // const date = new Date(getSelectedYear(state), action.monthNumber, 1);
+            return {...state, selectedMonth: action.monthNumber, date: null};
         case types.SELECT_YEAR:
-            return {...state, date: new Date(action.year, state.date.getMonth(), 1)};
+            return {...state, selectedYear: action.year, date: null};
         case types.SELECT_DAY:
-            return {...state, date: new Date(getSelectedYear(state), getSelectedMonth(state), action.dayNumber)};
+            return {...state, date: new Date(state.selectedYear, state.selectedMonth, action.dayNumber)};
 
         default:
             return state

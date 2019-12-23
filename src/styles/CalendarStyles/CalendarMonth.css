@@ -8,10 +8,6 @@
     border-bottom: #99a6b3 solid 1px;
 }
 
-.calendar__nav_bar button.month__selected {
-    background-color: #387a77;
-    color: whitesmoke;
-}
 
 .calendar__month {
     padding: 3rem 1.25rem 1.25rem;

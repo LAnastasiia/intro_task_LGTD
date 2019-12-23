@@ -25,10 +25,13 @@ export const getNewTasks = (state) => {
 };
 
 export const getModifiedTasks = (state) => {
-    return state.tasksReducer.modifiedTasksIndices.map(index => state.tasksReducer.tasks[index]);
+    return state.tasksReducer.modifiedTasksIndices.map(index => state.tasksReducer.tasks[index]).concat(state.tasksReducer.completedTasksIndices.map(index => state.tasksReducer.tasks[index]));
 };
 
 export const getDeletedTasks = (state) => {
-    console.log("getDeletedTasks", state.tasksReducer.deletedTasksIDs);
     return state.tasksReducer.deletedTasksIDs;
+};
+
+export const isFetching = (state) => {
+    return state.tasksReducer.isFetching && !state.tasksReducer.tasks.length
 };

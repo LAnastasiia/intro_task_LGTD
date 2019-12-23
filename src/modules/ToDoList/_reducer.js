@@ -7,11 +7,11 @@ const initialState = {
     newTasksIndices: [],
     modifiedTasksIndices: [],
     deletedTasksIDs: [],
-    completedTasksIndices: []
+    completedTasksIndices: [],
+    isFetching: false,
+    status: ''
 };
 
-// state  := {tasks: [], }
-// action := {type, ... [modTaskId+modContent || modTaskId, delTaskId, newTask]}
 
 export const tasksReducer = (state=initialState, action) => {
     const taskIndex = action.taskID && state.tasks.findIndex(t => t.id === action.taskID);
@@ -50,36 +50,27 @@ export const tasksReducer = (state=initialState, action) => {
                     [...state.completedTasksIndices.slice(0, existingIndex), ...state.completedTasksIndices.slice(existingIndex+1)]};
 
         case types.FETCH_NEW_TASKS:
-            console.log("action.newDate", action.newDate);
-            return {
-                ...state,
-                date: action.newDate,
-                tasks: [],
-                isFetching: true};
+            return {...state, date: action.newDate, tasks: [], isFetching: true};
 
         case types.RECEIVE_NEW_TASKS:
-            return {
-                ...state,
-                date: action.newDate,
-                tasks: action.tasks || [],
-                isFetching: false};
+            return {...state, date: action.newDate, tasks: action.tasks || [], isFetching: false};
 
-        case types.SEND_NEW_TASKS:
-            return {
-                ...state,
-                isFetching: true};
+        case types.COMMIT_LIST_CHANGES:
+            return {...state, isFetching: true};
 
-        case types.SAVED_NEW_TASKS:
-            return {
-                ...state,
-                isFetching: false,
-                success: true};
+        case types.COMMITTED_SUCCESSFULLY:
+            if (action.status) {
+                // Clear unsaved changes.
+                return {...state, isFetching: false, status: action.status,
+                    newTasksIndices: [],
+                    modifiedTasksIndices: [],
+                    deletedTasksIDs: [],
+                    completedTasksIndices: [],
+                };
+            } else return {...state, isFetching: false, status: action.status};
 
 
         default:
             return state
     }
 };
-
-
-// add COMMIT_LIST_CHANGES

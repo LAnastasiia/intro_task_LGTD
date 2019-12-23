@@ -60,13 +60,13 @@ export const getTasks = (prevDate, newDateNumber) => {
 
 function sendNewTasks() {
     return {
-        type: types.SEND_NEW_TASKS,
+        type: types.COMMIT_LIST_CHANGES,
     }
 }
 
 function savedNewTasks(responseStatus) {
     return {
-        type: types.SAVED_NEW_TASKS,
+        type: types.COMMITTED_SUCCESSFULLY,
         status: responseStatus
     }
 }
@@ -83,8 +83,8 @@ export const postTasksToServer = (tasks) => {
                     'isComplete': newTask.isComplete,
                     'date': newTask.date
                 })
-                .then(response => {console.log(response)}, error => console.log(error))
-                .then(json => dispatch(savedNewTasks(json)));
+                .then(response => response.status, error => console.log(error))
+                .then(status => dispatch(savedNewTasks(status)));
         });
     }
 };
@@ -101,20 +101,19 @@ export const putTasksToServer = (tasks) => {
                     'isComplete': updatedTask.isComplete,
                     'date': updatedTask.date
                 })
-                .then(response => {console.log(response)}, error => console.log(error))
-                .then(json => dispatch(savedNewTasks(json)));
+                .then(response => response.status, error => console.log(error))
+                .then(status => dispatch(savedNewTasks(status)));
         });
     }
 };
 
 export const deleteTasksFromServer = (tasks) => {
-    console.log("delIDs: ", tasks);
     return function (dispatch) {
         dispatch(sendNewTasks());
         return tasks.forEach(taskToDelete => {
             axios.delete(`http://localhost:3001/tasks/${taskToDelete}/`)
-                .then(response => {console.log(response)}, error => console.log(error))
-                .then(json => dispatch(savedNewTasks(json)));
+                .then(response => response.status, error => console.log(error))
+                .then(status => dispatch(savedNewTasks(status)));
         })
 
     }

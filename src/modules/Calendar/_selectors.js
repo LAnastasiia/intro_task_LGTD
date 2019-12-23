@@ -5,9 +5,9 @@ export const getSelectedDate = (state) => {
 };
 
 export const getSelectedYear = (state) => {
-    return (getSelectedDate(state) && getSelectedDate(state).getFullYear()) || new Date().getFullYear()
+    return state.dateReducer.selectedYear
 };
 
 export const getSelectedMonth = (state) => {
-    return (getSelectedDate(state) && getSelectedDate(state).getMonth()) || new Date().getMonth()
+    return state.dateReducer.selectedMonth
 };

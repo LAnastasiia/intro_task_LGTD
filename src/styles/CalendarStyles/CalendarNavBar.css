@@ -13,15 +13,12 @@
     color: rgb(56, 122, 119);
 }
 
-.calendar__nav_bar button:hover, button:focus{
-    background-color: #387a77;
+.calendar__nav_bar button:focus{
+    background-color: orange;
     color: whitesmoke;
 }
 
 .calendar__nav_bar__year{
-    /*-webkit-appearance: none;*/
-    /*-moz-appearance: none;*/
-    /*appearance: none;*/
     width: 3.5rem;
     height: 1.5rem;
     align-self: center;
@@ -36,5 +33,15 @@ button {
     border-style: none;
     margin: 0.25rem;
     border-radius: 10%;
+    color: whitesmoke;
+}
+
+.calendar__nav_bar button.month__selected {
+    background-color: orange;
+    color: whitesmoke;
+}
+
+.calendar__nav_bar button.month__this {
+    background-color: #387a77;
     color: whitesmoke;
 }

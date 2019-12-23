@@ -14,12 +14,21 @@ class CalendarNavBar extends React.Component {
     }
 
     selectYearOnClick = (event) => {
-        this.props.selectYear(event.target.value);
+        this.props.selectYear(parseInt(event.target.value));
     };
 
     getYearSpan(year=this.props.selectedYear, span=[-5,5]){
         span.sort();
-        return new Array(span[1]-span[0]+1).fill(null).map( (_, index) => year + span[0] + index);
+        return new Array(Math.abs(span[1]-span[0]) + 1).fill(0).map( (_, index) => year + span[0] + index);
+    }
+
+    getClassName(index) {
+        if (index === this.props.selectedMonth){
+            return "month__selected"
+        }
+        if (index === new Date().getMonth()){
+            return "month__this"
+        }
     }
 
     render() {
@@ -33,7 +42,7 @@ class CalendarNavBar extends React.Component {
 
                 { monthsShort().map( (monthName, index) =>
                     <button key={index}
-                            className={index === this.props.selectedMonth ? "month__selected" : ""}
+                            className={this.getClassName(index)}
                             onClick={() => this.selectMonthOnClick(index)}> {monthName} </button>
                 )}
             </section>

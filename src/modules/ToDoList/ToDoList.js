@@ -4,7 +4,14 @@ import '../../styles/ToDoListStyles/ToDoList.css'
 import ToDoTask from "./ToDoTask";
 
 import {connect} from 'react-redux'
-import {getDeletedTasks, getModifiedTasks, getNewTasks, getStoreTasks, listHasUnsavedChanges} from "./_selectors";
+import {
+    getDeletedTasks,
+    getModifiedTasks,
+    getNewTasks,
+    getStoreTasks,
+    isFetching,
+    listHasUnsavedChanges
+} from "./_selectors";
 import {addTask, deleteTasksFromServer, postTasksToServer, putTasksToServer} from "./_actionsDefinitions";
 
 
@@ -29,6 +36,14 @@ class ToDoList extends React.Component {
     };
 
     render() {
+        if (this.props.isFetching) {
+            return (
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="50" cy="50" r="50"/>
+                </svg>
+            );
+        }
+
         return (
             <ul className={"list"}>
                 { this.props.tasks.map((todo, i) => <ToDoTask key={i} id={todo.id}/>) }
@@ -38,10 +53,10 @@ class ToDoList extends React.Component {
                            value={this.state.inputValue}
                            onChange={this.onInputChange}
                            autoFocus={true}/>
-                    <button className={"actionButton"} onClick={this.addTaskOnAddButton}> ADD </button>
+                    <button className="actionButton" onClick={this.addTaskOnAddButton}> ADD </button>
                 </form>
 
-                { this.props.hasUnsavedChanges ? <button className={"inactive"} onClick={this.saveChanges}> SAVE </button> : null}
+                { this.props.hasUnsavedChanges ? <button className="actionButton" onClick={this.saveChanges}> SAVE </button> : null}
             </ul>
         )
     }
@@ -53,7 +68,8 @@ const mapStateToProps = (state) => {
         hasUnsavedChanges: listHasUnsavedChanges(state),
         newTasks: getNewTasks(state),
         editedTasks: getModifiedTasks(state),
-        deletedTasks: getDeletedTasks(state)
+        deletedTasks: getDeletedTasks(state),
+        isFetching: isFetching(state)
     };
 };
 

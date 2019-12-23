@@ -55,5 +55,5 @@ button {
 }
 
 .inactive{
-    border: solid 2px red;
+    opacity: 20%;
 }
